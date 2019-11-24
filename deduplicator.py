@@ -15,9 +15,9 @@ for dirName, subdirList, fileList in os.walk(user_input):
     for fname in fileList:
         imagefile = open(fname)
         image_contents = imagefile.read()
-        jpg_hash = hashlib.md5(image_contents).hexdigest()
+        fileHash = hashlib.md5(image_contents).hexdigest()
         imagefile.close()
-        if jpg_hash not in hash_list.keys():
-            hash_list[jpg_hash] = fname
-            print(jpg_hash + " : " + fname)
+        if fileHash not in hash_list.keys():
+            hash_list[fileHash] = fname
+            print(fileHash + " : " + fname)
             shutil.copy(fname, copy_dir)
